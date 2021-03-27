@@ -23,6 +23,7 @@ public class BackAnnotate {
 	Path sourcePath = null;
 	String source = null;
 	TreeMap<Integer,Integer> linePositions = new TreeMap<Integer,Integer> ();
+
 	public void readSource(){
 		try {
 			source = new String(Files.readAllBytes(sourcePath),

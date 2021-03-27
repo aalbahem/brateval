@@ -13,6 +13,7 @@ import java.util.Iterator;
  */
 
 public abstract class OutFormat {
+
 	public static class Span {
 		byte flags;
 		Object inner;
