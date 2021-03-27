@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>au.com.nicta.csp</groupId>
   <artifactId>brateval</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
+  <version>0.3.1-SNAPSHOT</version>
   <name>BRATEval</name>
   <description>Pairwise evaluation software for annotations in BRAT stand-off format.</description>
   <scm>

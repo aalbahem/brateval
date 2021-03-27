@@ -1,35 +1,38 @@
 package au.com.nicta.csp.brateval;
 
-public class Note
-{
-  private String id;
-  private String type;
-  private String entity;
-  private String string;
-  
-  private String file;
+public class Note {
+    private String id;
+    private String type;
+    private String entity;
+    private String string;
 
-  public Note (String id, String type, String entity, String string, String file)
-  {
-    this.id = id;
-    this.type = type;
-    this.entity = entity;
-    this.string = string;
-    this.file = file;
-  }
+    private String file;
 
-  public String getId()
-  { return id; }
+    public Note(String id, String type, String entity, String string, String file) {
+        this.id = id;
+        this.type = type;
+        this.entity = entity;
+        this.string = string;
+        this.file = file;
+    }
 
-  public String getType()
-  { return type; }
+    public String getId() {
+        return id;
+    }
 
-  public String getEntity()
-  { return entity; }
+    public String getType() {
+        return type;
+    }
 
-  public String getString()
-  { return string; }
-  
-  public String getFile()
-  { return file; }
+    public String getEntity() {
+        return entity;
+    }
+
+    public String getString() {
+        return string;
+    }
+
+    public String getFile() {
+        return file;
+    }
 }

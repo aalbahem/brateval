@@ -2,20 +2,20 @@ package au.com.nicta.csp.brateval;
 
 public class MatchType {
 
-    public enum SpanMatch {
+	public enum SpanMatch {
 		EXACT, // exact boundary match
 		APPROXIMATE, // relaxed boundary match, thresholded by edit-distance similarity
 		OVERLAP // relaxed boundary match
 	}
 
- 	public enum TypeMatch {
+	public enum TypeMatch {
 		EXACT, // exact type match
 		HIERARCHICAL, // types are in a hierarchical relationship (currently not handled; collapses to INEXACT)
 		INEXACT // types differ
-    }
-    
-    private SpanMatch spanMatchType;
-    private TypeMatch typeMatchType;
+	}
+
+	private SpanMatch spanMatchType;
+	private TypeMatch typeMatchType;
 	private double simThreshold = 1.0; // similarity threshold for approximate matching
 
 	/**
@@ -38,10 +38,10 @@ public class MatchType {
 	}
 
 
-	public static MatchType from(boolean exact_match, boolean verbose){
+	public static MatchType from(boolean exact_match, boolean verbose) {
 		MatchType matchType = new MatchType();
 
-		if (exact_match){
+		if (exact_match) {
 			matchType.setSpanMatchType(SpanMatch.EXACT);
 		} else {
 			matchType.setSpanMatchType(SpanMatch.EXACT);
@@ -50,10 +50,10 @@ public class MatchType {
 		return matchType;
 	}
 
-	public static MatchType buildEntityMatchType(boolean exactMatch, boolean isVerbose, double similarityThreshold){
+	public static MatchType buildEntityMatchType(boolean exactMatch, boolean isVerbose, double similarityThreshold) {
 		MatchType matchType = new MatchType();
 
-		if (exactMatch){
+		if (exactMatch) {
 			matchType.setTypeMatchType(TypeMatch.EXACT);
 		} else {
 			matchType.setTypeMatchType(TypeMatch.INEXACT);
@@ -102,7 +102,7 @@ public class MatchType {
 	}
 
 	public String toString() {
-		String str =  "Type match=" + this.typeMatchType + "; Span match=" + this.spanMatchType;
+		String str = "Type match=" + this.typeMatchType + "; Span match=" + this.spanMatchType;
 		if (this.spanMatchType.equals(SpanMatch.APPROXIMATE))
 			str = str.concat("; Similarity=" + this.simThreshold);
 
@@ -114,11 +114,11 @@ public class MatchType {
 		MatchType newMt = new MatchType();
 		int compType = mta.getTypeMatchType().compareTo(mtb.getTypeMatchType());
 		int compSpan = mta.getSpanMatchType().compareTo(mtb.getSpanMatchType());
-		
+
 		// Want the most permissive (highest) value to be used in result
 		if (compType == 0) { // equal
 			newMt.setTypeMatchType(mta.getTypeMatchType());
-		} else if (compType < 0 ) { // b higher than a
+		} else if (compType < 0) { // b higher than a
 			newMt.setTypeMatchType(mtb.getTypeMatchType());
 		} else if (compType > 0) { // a higher than b
 			newMt.setTypeMatchType(mta.getTypeMatchType());
@@ -126,13 +126,13 @@ public class MatchType {
 
 		if (compSpan == 0) { // equal
 			newMt.setSpanMatchType(mta.getSpanMatchType());
-		} else if (compSpan < 0 ) { // b higher than a
+		} else if (compSpan < 0) { // b higher than a
 			newMt.setSpanMatchType(mtb.getSpanMatchType());
 		} else if (compSpan > 0) { // a higher than b
 			newMt.setSpanMatchType(mta.getSpanMatchType());
 		}
 
 		return newMt;
-	} 
+	}
 
 }

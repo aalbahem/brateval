@@ -92,6 +92,6 @@ public class RelationMatchResult {
     public int hashCode() {
         return Objects.hash(rel, e1Result, e2Result, entMatch);
     }
- 
+
 
 }
