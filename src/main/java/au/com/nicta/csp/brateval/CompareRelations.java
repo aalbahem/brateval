@@ -96,14 +96,14 @@ public class CompareRelations
 	    evaluate(goldFolderPath,evalFolderPath,MatchType.from(exact_match,verbose));
     }
 
-    public static void evaluate(String goldFolderPath, String evalFolderPath, MatchType mt) throws IOException {
+    public static void evaluate(String goldFolderPath, String evalFolderPath, MatchType mt) throws Exception {
         List<Map<String,Object>> results = new LinkedList<>();
         evaluate(goldFolderPath, evalFolderPath, mt,results);
 
     }
 
     public static void evaluate(String goldFolderPath, String evalFolderPath, MatchType mt, List<Map<String,Object>> results)
-            throws IOException
+            throws Exception
     {
 
         if (goldFolderPath == null || evalFolderPath == null) {
@@ -131,7 +131,7 @@ public class CompareRelations
         for (File goldFile : goldFolder.listFiles()) {
             if (goldFile.getName().endsWith(".ann")) {
                 if(!evalFileNames.contains(goldFile.getName())) {
-                    throw new java.lang.Error("mandatory file is missing: " + goldFile.getName());
+                    throw new Exception("mandatory file is missing: " + goldFile.getName());
                 }
 
                 Map<String, RelationComparison> relations = new TreeMap<>();
